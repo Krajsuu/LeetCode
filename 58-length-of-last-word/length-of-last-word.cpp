@@ -8,7 +8,7 @@ public:
     }
 
     int lengthOfLastWord(string s) {
-        string last_word = "";
+        int wart = 0;
         int index = s.length() - 1;
         char ch = change_to_small(s[index]);
         while((int(ch) - 97 > 25 || int(ch) - 97 < 0) && index >= 0){
@@ -17,12 +17,11 @@ public:
             
         }
         while(int(ch) - 97 < 26 && int(ch) - 97 >= 0 && index >= 0){
-            last_word = ch + last_word;
+            wart++;
             index--;
             ch = change_to_small(s[index > 0 ? index : 0]);
             
         }
-        cout<<last_word;
-        return last_word.length();
+        return wart;
     }
 };
