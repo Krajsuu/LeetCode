@@ -9,14 +9,11 @@ public:
 
         while(s[pivot] == ' ') pivot++;
 
-        cout<<s[pivot]<<'\n';
         char checkSignedness = s[pivot];
         int signedness = checkSignedness == '-' ? -1 : 1;
         pivot = checkSignedness == '-' || checkSignedness == '+' ? pivot+=1 : pivot;
 
         while(s[pivot] == '0') pivot++;
-
-        cout<<s[pivot]<<'\n';
 
         string theNumber = "";
         while(pivot < s.size()){
@@ -25,13 +22,10 @@ public:
             pivot++;
         }
 
-        cout<<s[pivot]<<'\n'<<pivot<<" "<<theNumber;
-
 
         for(int i = 0; i < theNumber.size() ; i++){
             if(int(theNumber[i] - '0') >= 10 or int(theNumber[i] - '0') < 0) return 0;
-            int pos = theNumber[i] - '0';
-            value = value * 10 + pos;
+            value = value * 10 + int(theNumber[i] - '0');
             if(signedness == 1 && value > INT_MAX) return INT_MAX;
             if(signedness == -1 && -value < INT_MIN ) return INT_MIN;
             
